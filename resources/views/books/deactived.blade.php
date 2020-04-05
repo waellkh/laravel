@@ -1,6 +1,3 @@
-
-<h1> hello </h1>
-
 <table>
 <tr><td>id</td><td>name</td><td>email</td><td>edit</td><td>delete</td><td>status</td>
 </tr>
@@ -38,14 +35,3 @@ no item to shown
 @endforelse
 @csrf
 </table>
-<form action="http://localhost:8080/laravel/laravel-6-brgin/server.php/books/create">
- <button> Add from here </button>
- </form>
-
-
-
-
-<dive>
-
- <a href="http://localhost:8080/laravel/laravel-6-brgin/server.php/de?active=0">please click here to show deactived</a>
-</div> 

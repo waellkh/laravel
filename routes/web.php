@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Mail\welecomeMail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/store', ('addcontrole@add') );
 Route::get( '/show', ('hellocontroller@show'));
 Route::get( '/dash', ('hellocontroller@dashboard'));
@@ -32,3 +31,4 @@ route::patch('/infoid/{infos}',('bookscontroller@update'));
 route::delete('/infoid/{infos}/delete',('bookscontroller@delete'));
 route::get('/{infos}/active',('bookscontroller@active'));
 route::get('/{infos}/desactive',('bookscontroller@desactive'));
+route::get('/de','bookscontroller@de');

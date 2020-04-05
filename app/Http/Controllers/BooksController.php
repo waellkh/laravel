@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \App\Mail\welecomeMail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 class BooksController extends Controller
 {
     public function index()
     {
- 
-$data = \App\books::all();
-
+$data = \App\books::where('active',1)->get();
+//$data = \App\books::all();
  return view ('books.index',compact('data'));
     }
     public function index2()
@@ -21,8 +20,9 @@ $data = \App\books::all();
     public function create()
     { 
  $data=request()->validate([ 'name'=>'required','email'=>'email'  ]);
-    \App\books::create($data);
-
+    $d= \App\books::create($data);
+ 
+    Mail::to($d->email)->send(new welecomeMail());
 
  return redirect('/books');
     }
@@ -69,4 +69,9 @@ return view ('books.info',compact('infos'));
   $infos->update(array('active'=>'1'));
         return redirect('/books');
     }
+    public function de (Request $re)
+    {
+ $data=\App\books::where('active',$re->query('active',0))->get();
+
+ return view ('books.deactived',compact('data'));}
 }
